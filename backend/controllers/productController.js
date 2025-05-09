@@ -27,7 +27,7 @@ const addProduct = async(req, res) =>{
             name,
             description,
             category,
-            price: Number(price),
+            price: Number(price), //convert number
             subCategory,
             bestseller: bestseller ==="true" ? true: false,
             sizes: JSON.parse(sizes),
@@ -48,17 +48,39 @@ const addProduct = async(req, res) =>{
     }
 }
 
-const listProducts = async() =>{
+const listProducts = async(req, res) =>{
+    try{
+        const products = await productModel.find({});
+        res.json({success: true, products});
+    }catch(error){
+        console.log(error);
+        res.json({success: false, message: error.message});
+    }
     
 }
 
-const removeProduct = async() =>{
+const removeProduct = async(req, res) =>{
+    try{
+        await productModel.findByIdAndDelete(req.body.id);  //req.params.id: Use when the ID is passed in the URL (e.g., /products/123). req.body.id: Use when the ID is sent in the request body (e.g., in JSON). 
+        res.json({success: true, message: "Product removed"});
+
+    }catch(error){
+        console.log(error);
+        res.json({success: false, message: error.message});
+    }
     
 }
 
+const singleProduct = async(req, res) =>{
+    try{
+        const { productId } = req.body;
+        const product = await productModel.findById(productId);
+        res.json({success: true, product});
 
-
-const singleProduct = async() =>{
+    }catch(error){
+        console.log(error);
+        res.json({success: false, message: error.message});
+    }
     
 }
 

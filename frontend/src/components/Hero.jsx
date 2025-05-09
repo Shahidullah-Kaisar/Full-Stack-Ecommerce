@@ -17,7 +17,7 @@ const Hero = () => {
         const interval = setInterval(() => {
             setImage((prevImage) => {
                 const currentIndex = images.indexOf(prevImage);
-                const nextIndex = (currentIndex + 1) % images.length;
+                const nextIndex = (currentIndex + 0) % images.length;
                 return images[nextIndex];
             });
         }, 4000); 
