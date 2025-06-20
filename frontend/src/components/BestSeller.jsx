@@ -13,7 +13,7 @@ const BestSeller = () => {
         const bestProduct = products.filter((item)=> (item.bestseller === true));
         console.log('bestSeller',bestProduct)
         setBestSeller(bestProduct);
-    },[])
+    },[products])
 
     return (
         <div className=''>

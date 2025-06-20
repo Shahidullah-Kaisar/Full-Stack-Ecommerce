@@ -48,7 +48,7 @@ const addProduct = async(req, res) =>{
     }
 }
 
-const listProducts = async(req, res) =>{
+const listProducts = async(req, res) =>{ //all products
     try{
         const products = await productModel.find({});
         res.json({success: true, products});
