@@ -59,8 +59,8 @@ const userOrders = async (req, res) => {
 }
 
 // update order status from admin panel
-const updatesStatus = async (req, res) => {
+const updateStatus = async (req, res) => {
 
 }
 
-export { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updatesStatus}
+export { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updateStatus}

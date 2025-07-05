@@ -165,10 +165,9 @@ const ShopContextProvider = ({children}) => {
     const value = {
         products,
         currency,
-        delivery_fee,search,
-        setSearch,
-        showSearch,
-        setShowSearch,
+        delivery_fee,
+        search, setSearch,
+        showSearch, setShowSearch,
         cartItems, setCartItems,
         addToCart,
         getCartCount,
