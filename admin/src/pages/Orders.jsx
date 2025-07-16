@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -28,6 +29,7 @@ const Orders = ({ token }) => {
       }
     } catch (error) {
       console.log(error);
+      
       res.json({
         success: false,
         message: error.message,

@@ -106,10 +106,31 @@ const placeOrderStripe = async (req, res) => {
     }
 }
 
-// Placing orders using Razorpay Method
-const placeOrderRazorpay = async (req, res) => {
+const verifyStripe = async(req,res) => {
 
+    const { orderId, success, userId } = req.body
+
+    try {
+        if(success === "true"){
+            await orderModel.findByIdAndUpdate(orderId, { payment: true })
+            await userModel.findByIdAndUpdate(userId, { cartData: {} })
+            res.json({ success: true })
+        } else{
+            await orderModel.findByIdAndDelete(orderId)
+            res.json({ success: false })
+        }
+
+    } catch (error) {
+        console.log(error)
+
+        res.json({
+            success: false,
+            message: error.message
+        })
+    }
 }
+
+
 
 // All Orders data for Admin Panel
 const allOrders = async (req, res) => {
@@ -131,6 +152,7 @@ const allOrders = async (req, res) => {
     }
 }
 
+
 // User Order Data For Frontend
 const userOrders = async (req, res) => {
     try {
@@ -149,6 +171,7 @@ const userOrders = async (req, res) => {
         })
     }
 }
+
 
 // update order status from admin panel
 const updateStatus = async (req, res) => {
@@ -170,4 +193,5 @@ const updateStatus = async (req, res) => {
     }
 }
 
-export { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updateStatus}
+
+export { placeOrder, placeOrderStripe, allOrders, userOrders, updateStatus, verifyStripe}

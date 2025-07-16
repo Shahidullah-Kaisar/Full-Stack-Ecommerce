@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContextProvider';
 
-const ProductsItem = ({id,image,name,price}) => {
+const ProductsItem = ({id, image, name, price}) => {
 
     const {currency} = useContext(ShopContext);
     

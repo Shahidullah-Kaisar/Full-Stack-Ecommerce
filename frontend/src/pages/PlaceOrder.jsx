@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable no-case-declarations */
+import { useState } from "react";
 import Title from "../components/Title";
 import CartTotal from "../components/CartTotal";
 import { assets } from "../assets/assets";

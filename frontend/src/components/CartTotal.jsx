@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContextProvider';
 import Title from './Title';
